@@ -1,0 +1,1 @@
+export { watchCoucou } from './coucou';
