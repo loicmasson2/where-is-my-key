@@ -31,7 +31,18 @@ export default class Dot extends Component {
 
   render() {
     const { string, fret, finger, strings, lite } = this.props;
+    let fingerColor = "#444";
+    if (finger === 1){
+      // I assume that first fret will always be the first finger
+      fingerColor = "#7C4DFF";
+    } else if (finger === 2){
+      // I assume that second fret will always be the second finger
+      fingerColor = "#C2185B";
+    } else if (finger >= 3){
+      // I assume that third fret will always be either 3 or 4
+      fingerColor = "#4CAF50";
 
+    }
     return (
       fret === -1
         ? <text
@@ -45,8 +56,7 @@ export default class Dot extends Component {
         : (<g>
           <circle
             strokeWidth='0.25'
-            stroke='#444'
-            fill={fret === 0 ? 'transparent' : '#444'}
+            fill={fret === 0 ? 'transparent' : fingerColor}
             cx={getStringPosition(string, strings)}
             cy={positions.fret[fret]}
             r={fret === 0 ? radius['open'] : radius['fret']}
